@@ -23,3 +23,50 @@ A self-healing watchdog script for Raspberry Pi setups running Pi-hole and Unbou
    ```bash
    sudo cp dns-watchdog.sh /usr/local/bin/
    sudo chmod +x /usr/local/bin/dns-watchdog.sh
+
+2. Copy dns-watchdog.service and dns-watchdog.timer to /etc/systemd/system/:
+
+   sudo cp dns-watchdog.service /etc/systemd/system/
+   sudo cp dns-watchdog.timer /etc/systemd/system/
+
+3. Enable and start the timer:
+
+   sudo systemctl daemon-reload
+   sudo systemctl enable --now dns-watchdog.timer
+
+4. Configure email sending by copying msmtprc.template to ~/.msmtprc and editing with your credentials.
+
+   cp msmtprc.template ~/.msmtprc
+   nano ~/.msmtprc
+   chmod 600 ~/.msmtprc
+
+## Usage
+
+The script runs automatically via systemd timer every 30 seconds.
+
+To test manually:
+
+   sudo /usr/local/bin/dns-watchdog.sh
+
+## Troubleshooting
+
+Ensure mailutils and msmtp are installed and properly configured.
+
+Check the status of the timer and service with:
+
+   systemctl status dns-watchdog.timer
+   systemctl status dns-watchdog.service
+   
+Check logs via:
+
+   journalctl -u dns-watchdog.service
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.
+
+Created by Billy Azevedo
+
+---
+
+If you want, I can help with the exact Git commands to initialize the repo, commit, and push it to GitHub. Just say the word!
