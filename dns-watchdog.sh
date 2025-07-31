@@ -5,7 +5,7 @@ FAIL_LIMIT=3
 COUNTER_FILE="/tmp/dns_watchdog_failcount"
 ADMIN_EMAIL="user@email.com"  # <-- Your email here
 
-# FUNCTION: Check internet connectivity
+# FUNCTION: Permanently check internet connectivity
 check_connectivity() {
     ping -c 2 1.1.1.1 > /dev/null || ping -c 2 8.8.8.8 > /dev/null
     return $?
