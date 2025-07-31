@@ -1,0 +1,6 @@
+[Unit]
+Description=DNS Watchdog Service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/local/bin/dns-watchdog.sh
