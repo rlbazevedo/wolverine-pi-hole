@@ -1,0 +1,10 @@
+[Unit]
+Description=Run DNS Watchdog every 30 seconds
+
+[Timer]
+OnBootSec=30
+OnUnitActiveSec=30
+Unit=dns-watchdog.service
+
+[Install]
+WantedBy=timers.target
